@@ -1,0 +1,15 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/nzlib",
+  "whitelistedNonPeerDependencies": [
+    "hammerjs",
+    "@angularclass/hmr",
+    "autonumeric",
+    "@ant-design/icons-angular",
+    "date-fns",
+    "@angular/cdk"
+  ],
+  "lib": {
+    "entryFile": "src/public_api.ts"
+  }
+}

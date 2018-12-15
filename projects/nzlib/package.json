@@ -1,0 +1,20 @@
+{
+  "name": "nzlib",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^7.1.0",
+    "@angular/core": "^7.1.0"
+  },
+  "dependencies": {
+    "@angular/cdk": "^7.1.0",
+    "@angularclass/hmr": "^2.1.3",
+    "@ant-design/icons-angular": "2.0.0-beta.1",
+    "date-fns": "^1.29.0",
+    "hammerjs": "^2.0.8",
+    "autonumeric": "^4.5.1"
+  },
+  "devDependencies": {
+    "fs-extra": "^7.0.1",
+    "less-plugin-clean-css": "^1.5.1"
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "nzlib": {
+      "root": "projects/nzlib",
+      "sourceRoot": "projects/nzlib/src",
+      "projectType": "library",
+      "prefix": "nz",
+      "schematics": {
+        "@schematics/angular:directive": {
+          "spec": false
+        },
+        "@schematics/angular:module": {
+          "spec": false
+        },
+        "@schematics/angular:pipe": {
+          "spec": false
+        },
+        "@schematics/angular:component": {
+          "spec": false
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/nzlib/tsconfig.lib.json",
+            "project": "projects/nzlib/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/nzlib/tsconfig.lib.json",
+              "projects/nzlib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "nzapp": {
+      "root": "projects/nzapp/",
+      "sourceRoot": "projects/nzapp/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/nzapp",
+            "index": "projects/nzapp/src/index.html",
+            "main": "projects/nzapp/src/main.ts",
+            "polyfills": "projects/nzapp/src/polyfills.ts",
+            "tsConfig": "projects/nzapp/tsconfig.app.json",
+            "assets": [
+              "projects/nzapp/src/favicon.ico",
+              "projects/nzapp/src/assets"
+            ],
+            "styles": [
+              "projects/nzapp/src/styles.less"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/nzapp/src/environments/environment.ts",
+                  "with": "projects/nzapp/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": false,
+              "extractLicenses": true,
+              "vendorChunk": true,
+              "buildOptimizer": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "nzapp:build",
+            "hmr": true,
+            "hmrWarning": false
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "nzapp:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "nzapp:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/nzapp/src/test.ts",
+            "polyfills": "projects/nzapp/src/polyfills.ts",
+            "tsConfig": "projects/nzapp/tsconfig.spec.json",
+            "karmaConfig": "projects/nzapp/karma.conf.js",
+            "styles": [
+              "projects/nzapp/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/nzapp/src/favicon.ico",
+              "projects/nzapp/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/nzapp/tsconfig.app.json",
+              "projects/nzapp/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "nzlib"
+}
