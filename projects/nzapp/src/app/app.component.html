@@ -4,6 +4,16 @@
     Welcome to {{ title }}!
   </h1>
   <nz-date-picker></nz-date-picker>
-  <div nz-input-numeric></div>
-</div>
+  <input nz-input [(ngModel)]="title">
+  <br>
 
+  <nz-input-group nzAddOnBefore="Http://" nzAddOnAfter=".com">
+    <input type="text" nz-input [(ngModel)]="title">
+  </nz-input-group>
+  <br>
+
+  <nz-select [ngModel]="'Zhejiang'">
+    <nz-option [nzLabel]="'Zhejiang'" [nzValue]="'Zhejiang'"></nz-option>
+    <nz-option [nzLabel]="'Jiangsu'" [nzValue]="'Jiangsu'"></nz-option>
+  </nz-select>
+</div>
